@@ -4,7 +4,7 @@
 	<SelectDialog
 		title="Contrato de Compra"
 		class="sapUiPopupWithPadding sapUiSizeCompact"
-		items="{/ContratoCompras}"
+		items="{path: '/ContratoCompras', sorter: {path: 'Numero'}}"
 		search="_handleValueHelpSearch"
 		confirm="_handleValueHelpClose"
 		cancel="_handleValueHelpClose">

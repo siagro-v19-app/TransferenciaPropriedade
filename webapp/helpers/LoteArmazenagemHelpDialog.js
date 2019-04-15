@@ -6,9 +6,11 @@ sap.ui.define([
 	
 	return {
 		
-		handleValueHelp: function(oView, sInputId) {
+		handleValueHelp: function(oView, sInputId, oController) {
 			this._oView = oView;
 			this._inputId = sInputId;
+			
+			oController.getOwnerComponent().getModel().refresh(true);
 			
 			var sFrag = "br.com.idxtecTransferenciaPropriedade.helpers.LoteArmazenagemHelpDialog"; 
 			if (!this._valueHelpDialog) {

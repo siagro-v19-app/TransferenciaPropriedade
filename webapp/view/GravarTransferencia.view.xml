@@ -10,7 +10,7 @@ xmlns:f="sap.ui.layout.form">
 			<Page showHeader="false"> 
 				<content>
 					<VBox class="sapUiSmallMargin">
-						<Panel headerText="Transferência de Propriedade">
+						<Panel headerText="{view>/titulo}">
 							<f:SimpleForm id="formTransferencia"
 								editable="true"
 								layout="ResponsiveGridLayout"
@@ -28,7 +28,6 @@ xmlns:f="sap.ui.layout.form">
 								columnsM="2"
 								singleContainerFullSize="false">
 								<f:content>
-									<core:Title text="{view>/titulo}"/>
 									<Label text="Data" labelFor="data" required="true"/>
 									<DatePicker id="data" dateValue="{model>/Data}" displayFormat="dd.MM.yyyy" placeholder="dd.mm.aaaa"/>
 									
@@ -125,8 +124,8 @@ xmlns:f="sap.ui.layout.form">
 				<footer>
 					<Toolbar>
 						<ToolbarSpacer/>
-						<Button icon="sap-icon://save" id="salvar" text="Salvar" press="onSalvar"/>
-						<Button icon="sap-icon://reset" id="voltar" text="Cancelar" press="onVoltar"/>
+						<Button id="salvar" text="Salvar" press="onSalvar" type="Accept"/>
+						<Button id="voltar" text="Cancelar" press="onVoltar" type="Reject"/>
 					</Toolbar>
 				</footer>
 			</Page>

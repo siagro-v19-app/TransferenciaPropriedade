@@ -15,19 +15,25 @@ sap.ui.define([
 			this.getOwnerComponent().setModel(oParamModel, "parametros");
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 			
-			this.getModel().attachMetadataLoaded(function(){
-				var oFilter = new Filter("Empresa", FilterOperator.EQ, Session.get("EMPRESA_ID"));
-				var oView = this.getView();
-				var oTable = oView.byId("tableTransferencia");
-				var oColumn = oView.byId("columnData");
-				
-				oTable.sort(oColumn);
-				oView.byId("tableTransferencia").getBinding("rows").filter(oFilter, "Application");
+			var oFilter = new Filter("Empresa", FilterOperator.EQ, Session.get("EMPRESA_ID"));
+			var oView = this.getView();
+			var oTable = oView.byId("tableTransferencia");
+			
+			oTable.bindRows({
+				path: '/TransferenciaPropriedades',
+				sorter: {
+					path: 'Data',
+					descending: true
+				},
+				parameters: {
+					expand: 'ProdutoDetails,LoteArmazenagemDetails,LoteArmazenagemDetails1'
+				},
+				filters: oFilter
 			});
 		},
 		
 		filtraTransf: function(oEvent){
-			var sQuery = oEvent.getParameter("query");
+			var sQuery = oEvent.getParameter("query").toUpperCase();
 			var oFilter1 = new Filter("Empresa", FilterOperator.EQ, Session.get("EMPRESA_ID"));
 			var oFilter2 = new Filter("ProdutoDetails/Descricao", FilterOperator.Contains, sQuery);
 			

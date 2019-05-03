@@ -11,18 +11,6 @@
 			<Page showHeader="false" class="sapUiContentPadding" enableScrolling="false">
 				<content>
 					<t:Table id="tableTransferencia"
-						rows="{
-							path: '/TransferenciaPropriedades',
-							sorter: {
-								path: 'Data',
-								descending: true
-							},
-							parameters: {
-								expand: 'ProdutoDetails,
-								LoteArmazenagemDetails,
-								LoteArmazenagemDetails1'
-							}
-						}"
 						selectionMode="Single"
 						selectionBehavior="Row"
 						class="sapUiSizeCondensed"
@@ -33,7 +21,7 @@
 							<Toolbar>
 								<Title text="Lista de Transferências"/> 
 								<ToolbarSpacer/>
-								<SearchField placeholder="Pesquisar transferência..." width="30%" search="filtraTransf"/>
+								<SearchField placeholder="Pesquisar produto..." width="30%" search="filtraTransf"/>
 							</Toolbar> 
 						</t:toolbar>
 						<t:columns>

@@ -1,17 +1,67 @@
 <core:FragmentDefinition
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
-	<SelectDialog
+	<TableSelectDialog
 		title="Lote de Armazenagem"
 		class="sapUiPopupWithPadding sapUiSizeCompact"
-		items="{path: '/LoteArmazenagems', sorter: {path: 'Descricao'}}"
+		items="{path: '/LoteArmazenagems', sorter: {path: 'Descricao'}, parameters: {expand: 'LocalEstoqueDetails,ParceiroNegocioDetails,TabelaTarifaDetails,ProdutoDetails'}}"
 		search="_handleValueHelpSearch"
 		confirm="_handleValueHelpClose"
 		cancel="_handleValueHelpClose">
-		<StandardListItem
-			iconDensityAware="false"
-			iconInset="false"
-			title="{Descricao}"
-			description="{Id}" />
-	</SelectDialog>
+		<ColumnListItem>
+			<cells>
+				<ObjectNumber
+					number="{Id}"/>
+				<ObjectIdentifier
+					title="{Descricao}"/>
+				<ObjectIdentifier
+					title="{LocalEstoqueDetails/Descricao}"/>
+					<ObjectIdentifier
+					title="{ParceiroNegocioDetails/RazaoSocial}"/>
+					<ObjectIdentifier
+					title="{TabelaTarifaDetails/Descricao}"/>
+					<ObjectIdentifier
+					title="{ProdutoDetails/Descricao}"/>
+					<ObjectIdentifier
+					title="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: {style: 'short'}}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="4em">
+				<header>
+					<Text text="ID"/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Text text="Descrição"/>
+				</header>
+			</Column>
+			<Column width="10em">
+				<header>
+					<Text text="Armazém"/>
+				</header>
+			</Column>
+			<Column width="20em">
+				<header>
+					<Text text="Cliente"/>
+				</header>
+			</Column>
+			<Column width="10em">
+				<header>
+					<Text text="Tabela Tarifa"/>
+				</header>
+			</Column>
+			<Column width="10em">
+				<header>
+					<Text text="Produto"/>
+				</header>
+			</Column>
+			<Column width="10em">
+				<header>
+					<Text text="Data"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
 </core:FragmentDefinition>
